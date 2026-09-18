@@ -26,7 +26,7 @@ The API is served under `http://localhost:8080/harmoni`.
 
 ```bash
 cd frontend
-npm install
+npm ci
 npm run dev
 ```
 

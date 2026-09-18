@@ -5,7 +5,7 @@ The frontend is a small Next.js starter that mirrors the source repository struc
 ## Commands
 
 ```bash
-npm install
+npm ci
 npm run dev
 npm run lint
 npm run build

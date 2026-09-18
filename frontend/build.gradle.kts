@@ -57,7 +57,7 @@ tasks.named<Delete>("clean") {
 }
 
 tasks.named("build") {
-    dependsOn("dockerBuild")
+    dependsOn("npmBuild")
 }
 
 tasks.named("assemble") {

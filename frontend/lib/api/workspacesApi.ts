@@ -20,7 +20,13 @@ export async function getWorkspaces(): Promise<Workspace[]> {
 
     return (await response.json()) as Workspace[];
   } catch (error) {
-    console.warn('Falling back to local Harmoni workspace examples:', toErrorMessage(error));
-    return fallbackWorkspaces;
+    const shouldUseFallback = apiBaseUrl === 'http://localhost:8080/harmoni';
+
+    if (shouldUseFallback) {
+      console.warn('Falling back to local Harmoni workspace examples:', toErrorMessage(error));
+      return fallbackWorkspaces;
+    }
+
+    throw error;
   }
 }

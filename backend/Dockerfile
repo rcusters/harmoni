@@ -14,6 +14,6 @@ COPY --from=builder --chown=appuser:appuser /app/extracted/application/ ./
 USER appuser
 ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+UseG1GC -Djava.security.egd=file:/dev/./urandom"
 EXPOSE 8080
-HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 CMD wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 CMD wget --no-verbose --tries=1 --spider http://localhost:8080/harmoni/actuator/health || exit 1
 ENTRYPOINT ["dumb-init", "--"]
 CMD ["sh", "-c", "java $JAVA_OPTS org.springframework.boot.loader.launch.JarLauncher"]

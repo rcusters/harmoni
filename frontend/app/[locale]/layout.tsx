@@ -15,15 +15,13 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body style={{ margin: 0, fontFamily: 'Arial, sans-serif', background: '#f6f8fb', color: '#1f2937' }}>
-        <NextIntlClientProvider messages={messages}>
-          <Providers>
-            <AppHeader />
-            <main>{children}</main>
-          </Providers>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <div lang={locale} style={{ margin: 0, fontFamily: 'Arial, sans-serif', background: '#f6f8fb', color: '#1f2937', minHeight: '100vh' }}>
+      <NextIntlClientProvider messages={messages}>
+        <Providers>
+          <AppHeader />
+          <main>{children}</main>
+        </Providers>
+      </NextIntlClientProvider>
+    </div>
   );
 }

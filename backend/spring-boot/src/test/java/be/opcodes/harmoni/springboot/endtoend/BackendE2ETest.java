@@ -1,13 +1,14 @@
 package be.opcodes.harmoni.springboot.endtoend;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestClient;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;
 
-import java.util.List;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -15,40 +16,42 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class BackendE2ETest {
 
+    private final HttpClient httpClient = HttpClient.newHttpClient();
+
     @LocalServerPort
     int port;
 
-    @Autowired
-    TestRestClient restClient;
-
     @Test
-    void shouldExposeSeedWorkspace() {
-        var response = restClient.get()
-                .uri("http://localhost:" + port + "/harmoni/workspaces")
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .body(List.class);
+    void shouldExposeSeedWorkspace() throws Exception {
+        var request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:" + port + "/harmoni/workspaces"))
+                .header("Accept", "application/json")
+                .GET()
+                .build();
 
-        assertThat(response).isNotEmpty();
-        assertThat(response.getFirst()).asInstanceOf(org.assertj.core.api.InstanceOfAssertFactories.MAP)
-                .containsEntry("name", "Schedule Foundations");
+        var response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+        assertThat(response.body()).contains("Schedule Foundations");
     }
 
     @Test
-    void shouldCreateWorkspace() {
-        var request = Map.of(
-                "name", "Exam Planning",
-                "description", "Coordinate invigilators, rooms, and time slots."
-        );
+    void shouldCreateWorkspace() throws Exception {
+        var request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:" + port + "/harmoni/workspaces"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString("""
+                        {
+                          "name": "Exam Planning",
+                          "description": "Coordinate invigilators, rooms, and time slots."
+                        }
+                        """))
+                .build();
 
-        var created = restClient.post()
-                .uri("http://localhost:" + port + "/harmoni/workspaces")
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(request)
-                .retrieve()
-                .body(Map.class);
+        var response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
-        assertThat(created).containsEntry("name", "Exam Planning");
-        assertThat(created).containsKey("id");
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value());
+        assertThat(response.body()).contains("Exam Planning");
+        assertThat(response.body()).contains("id");
     }
 }

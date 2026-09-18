@@ -15,7 +15,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <div lang={locale} style={{ margin: 0, fontFamily: 'Arial, sans-serif', background: '#f6f8fb', color: '#1f2937', minHeight: '100vh' }}>
+    <div data-locale={locale} style={{ margin: 0, fontFamily: 'Arial, sans-serif', background: '#f6f8fb', color: '#1f2937', minHeight: '100vh' }}>
       <NextIntlClientProvider messages={messages}>
         <Providers>
           <AppHeader />

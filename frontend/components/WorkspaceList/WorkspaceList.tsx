@@ -14,10 +14,28 @@ export default function WorkspaceList() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let active = true;
+
     void getWorkspaces()
-      .then(setWorkspaces)
-      .catch((err: Error) => setError(err.message))
-      .finally(() => setLoading(false));
+      .then((nextWorkspaces) => {
+        if (active) {
+          setWorkspaces(nextWorkspaces);
+        }
+      })
+      .catch((err: Error) => {
+        if (active) {
+          setError(err.message);
+        }
+      })
+      .finally(() => {
+        if (active) {
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      active = false;
+    };
   }, []);
 
   if (loading) return <LoadingSpinner />;

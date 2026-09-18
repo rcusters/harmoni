@@ -9,6 +9,7 @@ export default function LanguageSelector() {
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations('language');
+  const selectId = 'locale-selector';
 
   const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const nextLocale = event.target.value;
@@ -22,9 +23,9 @@ export default function LanguageSelector() {
   };
 
   return (
-    <label style={{ color: '#fff' }}>
+    <label htmlFor={selectId} style={{ color: '#fff' }}>
       <span style={{ marginRight: '0.5rem' }}>{t('select')}</span>
-      <select value={locale} onChange={onChange} style={{ padding: '0.25rem 0.5rem' }}>
+      <select id={selectId} value={locale} onChange={onChange} style={{ padding: '0.25rem 0.5rem' }}>
         <option value="en">{t('en')}</option>
         <option value="nl">{t('nl')}</option>
       </select>

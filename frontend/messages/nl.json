@@ -1,0 +1,34 @@
+{
+  "menu": {
+    "workspaces": "Werkruimtes"
+  },
+  "home": {
+    "title": "Harmoni",
+    "description": "Een herbruikbare constraint-solving starter voor onderwijsplanning, bezetting en coördinatie.",
+    "cards": {
+      "workspaces": {
+        "title": "Werkruimtes",
+        "description": "Organiseer planningsscenario's en werk gericht aan solver-invoer per domein.",
+        "link": "Open voorbeeldwerkruimtes"
+      },
+      "engine": {
+        "title": "Backend klaar voor solvers",
+        "description": "De backend behoudt een ports-and-adapters-structuur zodat optimalisatielogica kan groeien zonder herstructurering."
+      },
+      "platform": {
+        "title": "Platform klaar voor deployment",
+        "description": "Docker, reverse proxy, frontend en smoke-teststructuur zijn al aanwezig."
+      }
+    }
+  },
+  "workspaces": {
+    "title": "Voorbeeldwerkruimtes",
+    "description": "Starterscenario's voor rooster- en resourcecoördinatie.",
+    "empty": "Er zijn nog geen voorbeeldwerkruimtes beschikbaar."
+  },
+  "language": {
+    "select": "Taal",
+    "en": "English",
+    "nl": "Nederlands"
+  }
+}

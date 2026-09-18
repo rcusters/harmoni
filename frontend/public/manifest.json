@@ -1,0 +1,8 @@
+{
+  "name": "harmoni",
+  "short_name": "harmoni",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f8fb",
+  "theme_color": "#111827"
+}

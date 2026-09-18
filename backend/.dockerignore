@@ -1,0 +1,17 @@
+**/.git
+**/.gitignore
+**/node_modules
+**/.gradle
+**/.idea
+**/*.iml
+**/.DS_Store
+**/bin
+**/out
+**/.settings
+**/.vscode
+**/Thumbs.db
+*.log
+*.md
+!README.md
+**/.classpath
+**/.project

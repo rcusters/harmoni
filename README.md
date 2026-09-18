@@ -4,7 +4,7 @@ Harmoni is a constraint-solving platform for education teams that need to coordi
 
 ## Structure
 
-This repository mirrors the technical structure of the materialwise project while replacing the product-specific implementation with a neutral Harmoni starter:
+This repository containers:
 
 - `backend/` — multi-module Java backend using ports and adapters
 - `frontend/` — Next.js frontend with internationalization support

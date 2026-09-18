@@ -1,0 +1,6 @@
+server:
+  servlet:
+    context-path: /harmoni
+
+cors:
+  allowed-origin-patterns: http://localhost:[*]

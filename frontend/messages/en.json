@@ -1,0 +1,34 @@
+{
+  "menu": {
+    "workspaces": "Workspaces"
+  },
+  "home": {
+    "title": "Harmoni",
+    "description": "A reusable constraint-solving starter for education scheduling, staffing, and coordination workflows.",
+    "cards": {
+      "workspaces": {
+        "title": "Workspaces",
+        "description": "Organize planning scenarios and iterate on solver inputs in focused domains.",
+        "link": "Open workspace examples"
+      },
+      "engine": {
+        "title": "Solver-ready backend",
+        "description": "The backend keeps a ports-and-adapters shape so optimization logic can grow without restructuring the project."
+      },
+      "platform": {
+        "title": "Deployment-ready platform",
+        "description": "Docker, reverse proxy, frontend, and smoke-test structure are already in place."
+      }
+    }
+  },
+  "workspaces": {
+    "title": "Workspace examples",
+    "description": "Starter scenarios for schedule and resource coordination.",
+    "empty": "No workspace examples are available yet."
+  },
+  "language": {
+    "select": "Language",
+    "en": "English",
+    "nl": "Nederlands"
+  }
+}

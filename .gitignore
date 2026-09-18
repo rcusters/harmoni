@@ -1,0 +1,39 @@
+# Gradle
+.gradle
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Java
+*.class
+*.log
+*.jar
+hs_err_pid*
+replay_pid*
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Next.js / Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env*.local
+frontend/.vercel
+frontend/.turbo
+
+# npm
+yarn.lock
+pnpm-lock.yaml
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / temp
+.DS_Store
+*.tmp
+*.temp
+*.swp
+*.swo
+*~

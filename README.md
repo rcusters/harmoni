@@ -1,4 +1,4 @@
-# harmoni
+# Harmoni
 
 Harmoni is a constraint-solving platform for education teams that need to coordinate schedules, resources, and other operational puzzles.
 

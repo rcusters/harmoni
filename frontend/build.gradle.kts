@@ -28,6 +28,14 @@ tasks.register<Exec>("npmBuild") {
     outputs.dir(".next")
 }
 
+tasks.register<Exec>("npmDev") {
+    group = "application"
+    description = "Start the Next.js development server"
+    dependsOn("npmInstall")
+    workingDir = projectDir
+    commandLine("npm", "run", "dev")
+}
+
 tasks.register<Exec>("dockerBuild") {
     group = "docker"
     description = "Build Docker image for frontend"
